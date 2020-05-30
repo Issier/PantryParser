@@ -1,3 +1,17 @@
-.App-header h1{
+.App-header {
   text-align: center;
+}
+
+h1 {
+  display: inline-block;
+}
+
+#mainContent {
+  float: left;
+  width: 80%;
+}
+
+#recipes {
+  margin-left: 20%;
+  margin-right: 10%;
 }

@@ -23,9 +23,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Pantry Parser</h1>
+        <img alt="Groceries" src="pantryParserLogo.png" id="groceryImage"></img>
+      </header>
+      <div id="recipes">
         {Object.keys(recipes).map(recipe => (
-          <div>
+          <div id="mainContent">
             <h2> { recipe } </h2>
             <ol>
             {recipes[recipe]["Ingredients"].map(value => (
@@ -34,7 +36,7 @@ function App() {
             </ol>
           </div>
         ))}
-      </header>
+      </div>
     </div>
   );
 }
