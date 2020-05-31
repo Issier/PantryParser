@@ -20,7 +20,7 @@ export function IngredientSelector(props) {
                 <h2>Ingredients</h2>
                 {
                     Object.keys(ingredients).map(ingredientName => (
-                     <button class="ingredientButton" onClick={(e) => props.updateIngredients(ingredients[ingredientName])} key={ingredientName}>{ingredientName}</button>
+                     <button className="ingredientButton" onClick={(e) => props.updateIngredients(ingredients[ingredientName])} key={ingredientName}>{ingredientName}</button>
                     ))
                 }
             </div>
