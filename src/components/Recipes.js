@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-export function App() {
+export function Recipes() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [recipes, setRecipes] = useState({});
 
@@ -35,4 +35,4 @@ export function App() {
   );
 }
 
-export default App;
+export default Recipes;

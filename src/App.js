@@ -1,5 +1,6 @@
 import React from 'react';
-import Recipes from './recipes/Recipes.js'
+import Recipes from './components/Recipes.js'; 
+import IngredientSelector from './components/IngredientSelector.js';
 import './App.css';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <header className="App-header">
         <img alt="Groceries" src="pantryParserLogo.png" id="groceryImage"></img>
       </header>
+      <IngredientSelector></IngredientSelector>
       <Recipes></Recipes>
     </div>
   );
