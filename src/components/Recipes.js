@@ -33,7 +33,7 @@ export function Recipes(props) {
         }
       </div>
       <div>
-        <button onClick={getRecipeList}>Get Recipes</button>
+        <button disabled={Object.keys(props.selectedIngredients).length < 1} onClick={getRecipeList}>Get Recipes</button>
       </div>
       {      
         Object.keys(recipes).map(recipe => (
