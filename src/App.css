@@ -6,6 +6,11 @@ h1 {
   display: inline-block;
 }
 
+#groceryImage {
+  width: 60%;
+  max-width: 500px;
+}
+
 #recipes {
   margin-top: 20px;
   text-align: center;

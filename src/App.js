@@ -19,7 +19,7 @@ function App() {
         <img alt="Groceries" src="pantryParserLogo.png" id="groceryImage"></img>
       </header>
       <IngredientSelector updateIngredients={updateIngredients}></IngredientSelector>
-      <Recipes selectedIngredients={selectedIngredients}></Recipes>
+      <Recipes selectedIngredients={selectedIngredients} updateIngredients={setSelectedIngredients}></Recipes>
     </div>
   );
 }

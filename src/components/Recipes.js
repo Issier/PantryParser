@@ -16,12 +16,20 @@ export function Recipes(props) {
       )
   }
 
+  const removeIngredient = (ingredient) => {
+    let currentUpdatedIngredients = {
+      ...props.selectedIngredients
+    };
+    delete currentUpdatedIngredients[ingredient]
+    props.updateIngredients(currentUpdatedIngredients)
+  }
+
   return (
     <div id="recipes">
       <h2>Recipes Including</h2>
       <div id="selectedIngredients">
         {
-          Object.keys(props.selectedIngredients).map(ingredient => <button>{ingredient}</button>)
+          Object.keys(props.selectedIngredients).map(ingredient => <button onClick={() => removeIngredient(ingredient)}>{ingredient}</button>)
         }
       </div>
       <div>
@@ -30,7 +38,7 @@ export function Recipes(props) {
       {      
         Object.keys(recipes).map(recipe => (
             <div id="mainContent">
-            <h2> { recipe } </h2>
+            <h2> Matching { recipe } Ingredient(s)</h2>
             {recipes[recipe].map(value => (
                 <div key={value["Name"]}>{value["Name"]}</div>
             ))}
