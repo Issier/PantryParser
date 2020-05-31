@@ -1,5 +1,6 @@
 .App-header {
   text-align: center;
+  background-color: lightblue;
 }
 
 h1 {
@@ -9,11 +10,15 @@ h1 {
 #groceryImage {
   width: 60%;
   max-width: 500px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 25px;
 }
 
 #recipes {
   margin-top: 20px;
   text-align: center;
+  margin-bottom: 50px;
 }
 
 #selectedIngredients {
@@ -28,4 +33,5 @@ h1 {
 
 .ingredientButton {
   width: 20%;
+  height: 100px;
 }

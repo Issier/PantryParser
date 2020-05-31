@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Recipe from './Recipe';
 
 export function Recipes(props) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -36,11 +37,11 @@ export function Recipes(props) {
         <button disabled={Object.keys(props.selectedIngredients).length < 1} onClick={getRecipeList}>Get Recipes</button>
       </div>
       {      
-        Object.keys(recipes).map(recipe => (
+        Object.keys(recipes).map(matchingIngredients => (
             <div id="mainContent">
-            <h2> Matching { recipe } Ingredient(s)</h2>
-            {recipes[recipe].map(value => (
-                <div key={value["Name"]}>{value["Name"]}</div>
+            <h2> Matching { matchingIngredients } Ingredient(s)</h2>
+            {recipes[matchingIngredients].map(recipe => (
+              <Recipe recipe={recipe}></Recipe>
             ))}
             </div>
         ))
