@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-export function IngredientSelector() {
+export function IngredientSelector(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [ingredients, setIngredients] = useState({});
 
@@ -17,13 +17,15 @@ export function IngredientSelector() {
 
         return (
             <div id="ingredients">
+                <h2>Ingredients</h2>
                 {
                     Object.keys(ingredients).map(ingredientName => (
-                     <button key={ingredientName}>{ingredientName}</button>
+                     <button class="ingredientButton" onClick={(e) => props.updateIngredients(ingredients[ingredientName])} key={ingredientName}>{ingredientName}</button>
                     ))
                 }
             </div>
         )
 }
+
 
 export default IngredientSelector   
