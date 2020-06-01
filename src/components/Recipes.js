@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Recipe from './Recipe';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export function Recipes(props) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,27 +29,39 @@ export function Recipes(props) {
   }
 
   return (
-    <div id="recipes">
-      <h2>Recipes Including</h2>
-      <div id="selectedIngredients">
-        {
-          Object.keys(props.selectedIngredients).map(ingredient => <button onClick={() => removeIngredient(ingredient)}>{ingredient}</button>)
-        }
-      </div>
-      <div>
-        <button disabled={Object.keys(props.selectedIngredients).length < 1} onClick={getRecipeList}>Get Recipes</button>
-      </div>
-      {      
-        Object.keys(recipes).map(matchingIngredients => (
-            <div id="mainContent">
-            <h2> Matching { matchingIngredients } Ingredient(s)</h2>
-            {recipes[matchingIngredients].map(recipe => (
-              <Recipe recipe={recipe}></Recipe>
-            ))}
-            </div>
-        ))
-      }
-    </div>
+    <Container id="recipes">
+        <Row>
+          <Col/>
+          <h2>Recipes Including</h2>
+          <Col/>
+        </Row>
+        <Row>
+          <Col/>
+            {
+              Object.keys(props.selectedIngredients).map(ingredient => <button onClick={() => removeIngredient(ingredient)}>{ingredient}</button>)
+            }
+          <Col/>
+        </Row>
+        <Row>
+          <Col/>
+            <button disabled={Object.keys(props.selectedIngredients).length < 1} onClick={getRecipeList}>Get Recipes</button>
+          <Col/>
+        </Row>
+          {      
+            Object.keys(recipes).map(matchingIngredients => (
+              <div>
+                <Row><Col/><h2> Matching { matchingIngredients } Ingredient(s)</h2><Col/></Row>
+                <Row>
+                  <Col/>
+                  {recipes[matchingIngredients].map(recipe => (
+                    <Recipe recipe={recipe}></Recipe>
+                  ))}
+                  <Col/>
+                </Row>
+              </div>
+            ))
+          }
+    </Container>
   );
 }
 

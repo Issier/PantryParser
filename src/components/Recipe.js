@@ -4,7 +4,8 @@ import Button from 'react-bootstrap/Button'
 
 export function Recipe(props) {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card className="recipe" style={{ width: '18rem' }}>
+            <Card.Img variant="top" src="platePlaceholder.jpg" />
             <Card.Body>
             <Card.Title>{props.recipe["Name"]}</Card.Title>
             <Card.Text>

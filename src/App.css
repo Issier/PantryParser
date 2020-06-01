@@ -33,5 +33,8 @@ h1 {
 
 .ingredientButton {
   width: 20%;
-  height: 100px;
+}
+
+.recipe {
+  margin-right: 2em;
 }
