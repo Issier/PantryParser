@@ -3,6 +3,7 @@ import Recipes from './components/Recipes.js';
 import IngredientSelector from './components/IngredientSelector.js';
 import Route from 'react-router-dom/Route';
 import './App.css';
+import { Redirect } from 'react-router-dom';
 
 function App() {
   const [selectedIngredients, setSelectedIngredients] = useState({})
@@ -38,6 +39,9 @@ function App() {
           </div>
         )}
       />
+      <Route path="*">
+        <Redirect to="/"></Redirect>
+      </Route>
     </div>
   );
 }
