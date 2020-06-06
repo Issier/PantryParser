@@ -9,7 +9,7 @@ export function Recipe(props) {
             <Card.Body>
             <Card.Title>{props.recipe["name"]}</Card.Title>
             <Card.Text>
-                {props.recipe["Description"]}
+                {props.recipe["description"]}
             </Card.Text>
             <Button variant="primary">Learn More</Button>
             </Card.Body>
