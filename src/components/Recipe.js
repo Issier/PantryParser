@@ -7,7 +7,7 @@ export function Recipe(props) {
         <Card className="recipe" style={{ width: '18rem' }}>
             <Card.Img variant="top" src="platePlaceholder.jpg" />
             <Card.Body>
-            <Card.Title>{props.recipe["Name"]}</Card.Title>
+            <Card.Title>{props.recipe["name"]}</Card.Title>
             <Card.Text>
                 {props.recipe["Description"]}
             </Card.Text>

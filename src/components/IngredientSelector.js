@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 export function IngredientSelector(props) {
     const [isLoaded, setIsLoaded] = useState(false);
-    const [ingredients, setIngredients] = useState({});
+    const [ingredients, setIngredients] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:8080/ingredients")
@@ -31,8 +31,8 @@ export function IngredientSelector(props) {
                         <Accordion.Collapse eventKey="0">
                             <Card.Body>
                                 {
-                                    Object.keys(ingredients).map(ingredientName => (
-                                        <button className="ingredientButton" onClick={(e) => props.updateIngredients(ingredients[ingredientName])} key={ingredientName}>{ingredientName}</button>
+                                    ingredients.map(ingredient => (
+                                        <button className="ingredientButton" onClick={(e) => props.updateIngredients(ingredient)} key={ingredient.name}>{ingredient.name}</button>
                                     ))
                                 }
                             </Card.Body>

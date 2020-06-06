@@ -11,7 +11,7 @@ function App() {
   const updateIngredients = (ingredient) => {
      setSelectedIngredients({
       ...selectedIngredients,
-      [ingredient.Name]: ingredient,
+      [ingredient.name]: ingredient,
     })
   }
 
