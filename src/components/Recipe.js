@@ -32,7 +32,6 @@ export function Recipe(props) {
     } else {
         renderBody = (
             <div>
-                <Card.Img variant="top" src="platePlaceholder.jpg" />
                 <Card.Body>
                 <Card.Title>{props.recipe["name"]}</Card.Title>
                 <Card.Text>
@@ -55,6 +54,7 @@ export function Recipe(props) {
                 </Nav.Item>
                 </Nav>
             </Card.Header>
+            <Card.Img variant="top" src="platePlaceholder.jpg" />
             {renderBody}
         </Card>
     )
