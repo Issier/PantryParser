@@ -53,7 +53,7 @@ export function AddRecipe(props) {
                 <Form.Control onChange={handleOptionEvent} as="select" multiple>
                     {
                         ingredients.map(ingredient => (
-                            <option value={[ingredient["name"], ingredient["category"]]}>{ingredient["name"]}</option>
+                            <option key={ingredient["name"]} value={[ingredient["name"], ingredient["category"]]}>{ingredient["name"]}</option>
                         ))
                     }
                 </Form.Control>
