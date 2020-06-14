@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { Redirect } from 'react-router-dom';
 import AddRecipe from './components/AddRecipe.js';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 function App() {
   const [selectedIngredients, setSelectedIngredients] = useState({})
@@ -27,6 +28,28 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Navbar collapseOnSelect bg="light" variant="light">
+          <NavDropdown id="collasible-nav-dropdown navItemsMobile">
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/recipes/add">Add Recipe</Nav.Link>
+            <Nav.Link target="_" href="https://github.com/Issier/PantryParser">Github</Nav.Link>
+          </NavDropdown>
+          <Navbar.Brand href="/"> 
+          <img
+            alt="apple"
+            src="/apple.png"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />{' '}
+          Pantry Parser 
+          </Navbar.Brand>
+          <Nav>
+            <Nav.Link className="navItemsDesktop" href="/">Home</Nav.Link>
+            <Nav.Link className="navItemsDesktop" href="/recipes/add">Add Recipe</Nav.Link>
+            <Nav.Link className="navItemsDesktop" target="_" href="https://github.com/Issier/PantryParser">Github</Nav.Link>
+          </Nav>
+        </Navbar>
         <img alt="Groceries" src={"/pantryParserLogo.png"} id="groceryImage"></img>
       </header>
       <Router>

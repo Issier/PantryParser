@@ -88,3 +88,22 @@ h1 {
   text-align: center;
   font-size: 1.25rem;
 }
+
+div.dropdown.nav-item {
+  visibility: hidden;
+}
+
+@media (max-width: 550px) {
+  .navItemsDesktop {
+    visibility: hidden;
+  }
+
+
+  div.dropdown.nav-item {
+    visibility: visible;
+  }
+
+  div.dropdown.nav-item a {
+    color: black;
+  }
+}
