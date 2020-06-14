@@ -44,7 +44,7 @@ export function Recipe(props) {
     }
 
     return (
-        <Card className="recipe" style={{ width: '18rem' }}>
+        <Card className="recipe">
             <Card.Header>
                 <Nav defaultActiveKey="overview" fill variant="tabs" onSelect={(selectedKey) => setKey(selectedKey)}>
                 <Nav.Item>
