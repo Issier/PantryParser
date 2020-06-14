@@ -4,6 +4,7 @@ import IngredientSelector from './components/IngredientSelector.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { Redirect } from 'react-router-dom';
+import AddRecipe from './components/AddRecipe.js';
 
 function App() {
   const [selectedIngredients, setSelectedIngredients] = useState({})
@@ -38,9 +39,7 @@ function App() {
           )}
         />
         <Route exact path="/recipes/add" render={() => (
-            <div>
-              <h1>Not Implemented</h1>
-            </div>
+            <AddRecipe></AddRecipe>
           )}
         />
         <Route path="*">
