@@ -16,13 +16,12 @@ export function IngredientSelector(props) {
             (result) => {
                 setIsLoaded(true)
                 setIngredients(result)
-                setSearchIngredients(result)
             }
             )
         }, []);
 
     function updateIngredientList(ingredientSearchTerm) {
-        setSearchIngredients(ingredients.filter(ingredient => ingredient.name.includes(ingredientSearchTerm)));
+        setSearchIngredients(ingredientSearchTerm === "" ? [] : ingredients.filter(ingredient => ingredient.name.includes(ingredientSearchTerm)));
     }
 
     let selectedIngredientsBody;
