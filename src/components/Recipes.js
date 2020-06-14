@@ -38,7 +38,7 @@ export function Recipes(props) {
         <Row>
           <Col/>
             {
-              Object.keys(props.selectedIngredients).map(ingredient => <button onClick={() => removeIngredient(ingredient)}>{ingredient}</button>)
+              Object.keys(props.selectedIngredients).map(ingredient => <button key={ingredient} onClick={() => removeIngredient(ingredient)}>{ingredient}</button>)
             }
           <Col/>
         </Row>
@@ -49,12 +49,12 @@ export function Recipes(props) {
         </Row>
           {      
             Object.keys(recipes).map(matchingIngredients => (
-              <div>
+              <div key={matchingIngredients}>
                 <Row><Col/><h2> Matching { matchingIngredients } Ingredient(s)</h2><Col/></Row>
                 <Row>
                   <Col/>
                   {recipes[matchingIngredients].map(recipe => (
-                    <Recipe recipe={recipe}></Recipe>
+                    <Recipe key={recipe.name} recipe={recipe}></Recipe>
                   ))}
                   <Col/>
                 </Row>
