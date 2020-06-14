@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Recipe from './Recipe';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

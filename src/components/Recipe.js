@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Table, Nav, Card} from 'react-bootstrap';
-import Button from 'react-bootstrap/Button'
 
 export function Recipe(props) {
     const [key, setKey] = useState("overview");
