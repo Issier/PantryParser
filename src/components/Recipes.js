@@ -9,12 +9,12 @@ export function Recipes(props) {
   return (
     <Container id="recipes">
           {      
-            Object.keys(props.recipes).map(matchingIngredients => (
-              <div key={matchingIngredients}>
-                <Row><Col/><h2> Matching { matchingIngredients } Ingredient(s)</h2><Col/></Row>
+            Object.keys(props.recipes).map(numberOfMatchingIngredients => (
+              <div key={numberOfMatchingIngredients}>
+                <Row><Col/><h2> Matching { numberOfMatchingIngredients } Ingredient(s)</h2><Col/></Row>
                 <Row>
                   <Col/>
-                  {props.recipes[matchingIngredients].map(recipe => (
+                  {props.recipes[numberOfMatchingIngredients].map(recipe => (
                     <Recipe key={recipe.name} recipe={recipe}></Recipe>
                   ))}
                   <Col/>
