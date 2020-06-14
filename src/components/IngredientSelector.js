@@ -42,7 +42,7 @@ export function IngredientSelector(props) {
             <Card.Body>
                 {
                     searchIngredients.map(ingredient => (
-                        <button className="ingredientButton" onClick={(e) => updateIngredients(ingredient)} key={ingredient.name}>{ingredient.name}</button>
+                        <Button className="ingredientButton blueButtonColor" onClick={(e) => updateIngredients(ingredient)} key={ingredient.name}>{ingredient.name}</Button>
                     ))
                 }
             </Card.Body>
@@ -81,10 +81,10 @@ export function IngredientSelector(props) {
                 </InputGroup>
                 <div>
                     {
-                        Object.keys(selectedIngredients).map(ingredient => <button key={ingredient} onClick={() => removeIngredient(ingredient)}>{ingredient}</button>)
+                        Object.keys(selectedIngredients).map(ingredient => <Button className="selectedIngredientsButton blueButtonColor" key={ingredient} onClick={() => removeIngredient(ingredient)}>{ingredient}</Button>)
                     }
                 </div>
-                <Button style={{marginTop: '10px'}} disabled={Object.keys(selectedIngredients).length < 1} onClick={props.getRecipeList}>Get Recipes</Button>
+                <Button style={{marginTop: '10px', backgroundColor: 'green', border: 'green'}} disabled={Object.keys(selectedIngredients).length < 1} onClick={props.getRecipeList}>Get Recipes</Button>
                 </Card.Header>
                 { selectedIngredientsBody }
             </Card>

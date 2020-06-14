@@ -38,7 +38,7 @@ export function AddRecipe(props) {
     });
 
     return (
-        <Form>
+        <Form id="newRecipe">
             <h1>New Recipe</h1>
             <Form.Group>
                 <Form.Label>Name</Form.Label>
@@ -58,7 +58,7 @@ export function AddRecipe(props) {
                     }
                 </Form.Control>
             </Form.Group>
-            <Button onClick={postRecipe}>Add Recipe</Button>
+            <Button className="blueButtonColor"onClick={postRecipe}>Add Recipe</Button>
         </Form>
     )
       
