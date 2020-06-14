@@ -7,6 +7,7 @@ export function IngredientSelector(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [ingredients, setIngredients] = useState([]);
     const [searchIngredients, setSearchIngredients] = useState([]);
+    const [selectedIngredients, setSelectedIngredients] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:8080/ingredients")
@@ -37,12 +38,30 @@ export function IngredientSelector(props) {
             <Card.Body>
                 {
                     searchIngredients.map(ingredient => (
-                        <button className="ingredientButton" onClick={(e) => props.updateIngredients(ingredient)} key={ingredient.name}>{ingredient.name}</button>
+                        <button className="ingredientButton" onClick={(e) => updateIngredients(ingredient)} key={ingredient.name}>{ingredient.name}</button>
                     ))
                 }
             </Card.Body>
         );
     }
+
+    const removeIngredient = (ingredient) => {
+        let currentUpdatedIngredients = {
+          ...selectedIngredients
+        };
+        delete currentUpdatedIngredients[ingredient]
+        props.updateIngredients(currentUpdatedIngredients)
+        setSelectedIngredients(currentUpdatedIngredients)
+    }
+
+    const updateIngredients = (ingredient) => {
+        const newSelectedIngredients = {
+            ...selectedIngredients,
+            [ingredient.name]: ingredient,
+        }
+        setSelectedIngredients(newSelectedIngredients)
+        props.updateIngredients(newSelectedIngredients)
+     }
 
     return (
         <div id="ingredients">
@@ -56,6 +75,12 @@ export function IngredientSelector(props) {
                         aria-describedby="basic-addon2"
                     />
                 </InputGroup>
+                <div>
+                    {
+                        Object.keys(selectedIngredients).map(ingredient => <button key={ingredient} onClick={() => removeIngredient(ingredient)}>{ingredient}</button>)
+                    }
+                </div>
+                <Button style={{marginTop: '10px'}} disabled={Object.keys(selectedIngredients).length < 1} onClick={props.getRecipeList}>Get Recipes</Button>
                 </Card.Header>
                 { selectedIngredientsBody }
             </Card>

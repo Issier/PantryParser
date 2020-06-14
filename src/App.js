@@ -7,12 +7,20 @@ import { Redirect } from 'react-router-dom';
 
 function App() {
   const [selectedIngredients, setSelectedIngredients] = useState({})
+  const [recipes, setRecipes] = useState({});
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const updateIngredients = (ingredient) => {
-     setSelectedIngredients({
-      ...selectedIngredients,
-      [ingredient.name]: ingredient,
-    })
+
+  const getRecipeList = () => {
+    const ingredientQueryArgs = Object.keys(selectedIngredients).join(",")
+    fetch(`http://localhost:8080/recipes?ingredients=${ingredientQueryArgs}`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true)
+          setRecipes(result)
+        }
+      )
   }
 
   return (
@@ -24,8 +32,8 @@ function App() {
         <Switch>
           <Route exact path="/" render={() => (
             <div>
-              <IngredientSelector updateIngredients={updateIngredients}></IngredientSelector>
-              <Recipes selectedIngredients={selectedIngredients} updateIngredients={setSelectedIngredients}></Recipes>
+              <IngredientSelector getRecipeList={getRecipeList} updateIngredients={setSelectedIngredients}></IngredientSelector>
+              <Recipes recipes={recipes} updateIngredients={setSelectedIngredients}></Recipes>
             </div>
           )}
         />
