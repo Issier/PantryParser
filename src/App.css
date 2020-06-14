@@ -23,6 +23,13 @@ h1 {
   margin-left: 10%;
 }
 
+#checkSymbol {
+  width: 2em;
+  max-width: 20px;
+  height: 2em;
+  max-height: 20px;
+}
+
 #selectedIngredients {
   margin-bottom: 20px;
 }
@@ -39,6 +46,12 @@ h1 {
 
 #ingredients {
   text-align: center;
+}
+
+#getRecipesButton {
+  margin-top: 10px;
+  background-color: green;
+  border: green;
 }
 
 .ingredientButton {

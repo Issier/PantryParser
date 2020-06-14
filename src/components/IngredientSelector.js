@@ -74,8 +74,8 @@ export function IngredientSelector(props) {
                 <Card.Title>Select Ingredients</Card.Title>
                 <InputGroup className="mb-3" id="ingredientSearchBar" onChange={(e) => updateIngredientList(e.target.value)}>
                     <FormControl
-                        placeholder="Filter ingredients"
-                        aria-label="Filter ingredients"
+                        placeholder="Filter Ingredients"
+                        aria-label="Filter Ingredients"
                         aria-describedby="basic-addon2"
                     />
                 </InputGroup>
@@ -84,7 +84,7 @@ export function IngredientSelector(props) {
                         Object.keys(selectedIngredients).map(ingredient => <Button className="selectedIngredientsButton blueButtonColor" key={ingredient} onClick={() => removeIngredient(ingredient)}>{ingredient}</Button>)
                     }
                 </div>
-                <Button style={{marginTop: '10px', backgroundColor: 'green', border: 'green'}} disabled={Object.keys(selectedIngredients).length < 1} onClick={props.getRecipeList}>Get Recipes</Button>
+                <Button id="getRecipesButton" disabled={Object.keys(selectedIngredients).length < 1} onClick={props.getRecipeList}>Get Recipes</Button>
                 </Card.Header>
                 { selectedIngredientsBody }
             </Card>

@@ -34,7 +34,7 @@ function App() {
           <Route exact path="/" render={() => (
             <div>
               <IngredientSelector getRecipeList={getRecipeList} updateIngredients={setSelectedIngredients}></IngredientSelector>
-              <Recipes recipes={recipes} updateIngredients={setSelectedIngredients}></Recipes>
+              <Recipes selectedIngredients={selectedIngredients} recipes={recipes} updateIngredients={setSelectedIngredients}></Recipes>
             </div>
           )}
         />

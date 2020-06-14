@@ -6,6 +6,14 @@ export function Recipe(props) {
 
     let renderBody;
 
+    const getUrlForCorrectMark = (ingredientName) => {
+        if (Object.keys(props.selectedIngredients).includes(ingredientName)) {
+            return "check.png";
+        } else {
+            return "xmark.jpg";
+        }
+    }
+
     if (key === 'details') {
         renderBody = (
             <div>
@@ -16,14 +24,17 @@ export function Recipe(props) {
                         <tr>
                             <th>Name</th>
                             <th>Amount</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        {props.recipe["ingredients"]?.map(ingredient => (
-                            <tr key={ingredient["name"]}>
-                                <td>{ingredient["name"]}</td>
-                                <td>?</td>
-                            </tr>
+                        {
+                            props.recipe["ingredients"]?.map(ingredient => (
+                                <tr key={ingredient["name"]}>
+                                    <td>{ingredient["name"]}</td>
+                                    <td>?</td>
+                                    <td><img alt="check mark" src={getUrlForCorrectMark(ingredient["name"])} id="checkSymbol"></img></td>
+                                </tr>
                         ))}
                     </tbody>
                 </Table>

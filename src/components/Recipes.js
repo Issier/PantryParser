@@ -13,7 +13,7 @@ export function Recipes(props) {
             <CardDeck className="recipeSet">
               {
                 props.recipes[numberOfMatchingIngredients].map(recipe => (
-                  <Recipe key={recipe.name} recipe={recipe}></Recipe>
+                  <Recipe selectedIngredients={props.selectedIngredients} key={recipe.name} recipe={recipe}></Recipe>
                 ))
               }
             </CardDeck>
