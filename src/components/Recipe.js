@@ -12,20 +12,22 @@ export function Recipe(props) {
             <div>
                 <Card.Body>
                 <Card.Title>{props.recipe["name"]}</Card.Title>
-                <Card.Text>
-                    <Table>
-                        <thead>
+                <Table>
+                    <thead>
+                        <tr>
                             <th>Name</th>
                             <th>Amount</th>
-                        </thead>
+                        </tr>
+                    </thead>
+                    <tbody>
                         {props.recipe["ingredients"]?.map(ingredient => (
-                            <tr>
+                            <tr key={ingredient["name"]}>
                                 <td>{ingredient["name"]}</td>
                                 <td>?</td>
                             </tr>
                         ))}
-                    </Table>
-                </Card.Text>
+                    </tbody>
+                </Table>
                 </Card.Body>
             </div>
         )
