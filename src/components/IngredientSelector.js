@@ -67,7 +67,7 @@ export function IngredientSelector(props) {
             <Card>
                 <Card.Header>
                 <Card.Title>Select Ingredients</Card.Title>
-                <InputGroup className="mb-3" onChange={(e) => updateIngredientList(e.target.value)}>
+                <InputGroup className="mb-3" id="ingredientSearchBar" onChange={(e) => updateIngredientList(e.target.value)}>
                     <FormControl
                         placeholder="Filter ingredients"
                         aria-label="Filter ingredients"

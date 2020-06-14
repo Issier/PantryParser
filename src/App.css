@@ -29,9 +29,6 @@ h1 {
 
 #ingredients {
   text-align: center;
-  margin-left: 10%;
-  margin-top: 20px;
-  width: 80%;
 }
 
 .ingredientButton {
@@ -44,9 +41,16 @@ h1 {
 
 .recipe {
   display: inline-block;
-  max-width: 500px;
+  max-width: 600px;
 }
 
 .recipeSet {
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+#ingredientSearchBar {
+  display: inline-block;
+  max-width: 700px;
 }
