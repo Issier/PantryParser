@@ -22,8 +22,11 @@ export function Recipe(props) {
     }, [props.recipe]);
 
     const IngredientMatching = () => {
-        return ingredientsMatching.map((ingredient) => {
-            return <Badge bg="success" pill style={{color: 'white', padding: '6px', margin: '3px'}}>{ingredient}</Badge>
+        console.log(Object.entries(props.selectedIngredients))
+        return props.recipe["ingredients"].map((i) => i["name"]).map((ingredientName) => {
+            return Object.keys(props.selectedIngredients).includes(ingredientName) ? 
+                <Badge bg="success" pill style={{color: 'white', padding: '6px', margin: '3px'}}>{ingredientName}</Badge> :
+                <Badge bg="danger" pill style={{color: 'white', padding: '6px', margin: '3px'}}>{ingredientName}</Badge>
         });
     }
 
