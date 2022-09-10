@@ -84,7 +84,7 @@ export function IngredientSelector(props) {
                             Object.keys(selectedIngredients).map(ingredient => <Button className="selectedIngredientsButton blueButtonColor" key={ingredient} onClick={() => removeIngredient(ingredient)}>{ingredient}</Button>)
                         }
                     </div>
-                    <Button id="getRecipesButton" disabled={Object.keys(selectedIngredients).length < 1} onClick={props.getRecipeList}>Get Recipes</Button>
+                    {Object.keys(selectedIngredients).length >= 1 && <Button id="getRecipesButton" onClick={props.getRecipeList}>Get Recipes</Button>}
                 </Card.Body>
             </Card>
         </div>
