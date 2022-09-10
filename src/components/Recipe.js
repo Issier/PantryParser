@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
-import {Table, Nav, Card} from 'react-bootstrap';
+import React, {useEffect, useState} from 'react';
+import {Table, Nav, Card, Badge} from 'react-bootstrap';
 
 export function Recipe(props) {
     const [key, setKey] = useState("overview");
+    const [ingredientsMatching, setIngredientMatching] = useState([]);
 
     let renderBody;
 
@@ -12,6 +13,18 @@ export function Recipe(props) {
         } else {
             return "xmark.jpg";
         }
+    }
+
+    useEffect(() => {
+        setIngredientMatching(Object.keys(props.selectedIngredients).filter((ingredientName) => {
+            return props.recipe["ingredients"].map((i) => i["name"]).includes(ingredientName)
+        }));
+    }, []);
+
+    const IngredientMatching = () => {
+        return ingredientsMatching.map((ingredient) => {
+            return <Badge pill style={{backgroundColor: 'lightblue'}}>{ingredient}</Badge>
+        });
     }
 
     if (key === 'details') {
@@ -46,7 +59,8 @@ export function Recipe(props) {
             <div>
                 <Card.Body>
                 <Card.Title>{props.recipe["name"]}</Card.Title>
-                <Card.Text>
+                <Card.Subtitle><IngredientMatching /></Card.Subtitle>
+                <Card.Text style={{marginTop: '20px'}}>
                     {props.recipe["description"]}
                 </Card.Text>
                 </Card.Body>
@@ -58,15 +72,14 @@ export function Recipe(props) {
         <Card className="recipe">
             <Card.Header>
                 <Nav defaultActiveKey="overview" fill variant="tabs" onSelect={(selectedKey) => setKey(selectedKey)}>
-                <Nav.Item>
-                    <Nav.Link eventKey="overview">Overview</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="details">Details</Nav.Link>
-                </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="overview">Overview</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="details">Details</Nav.Link>
+                    </Nav.Item>
                 </Nav>
             </Card.Header>
-            <Card.Img variant="top" src="platePlaceholder.jpg" />
             {renderBody}
         </Card>
     )
