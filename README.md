@@ -3,7 +3,7 @@ Web application allowing users to get a list of recipes based on the ingredients
 
 Backend provided by [PantryParserAPI](https://github.com/Issier/PantryParserAPI)
 
-## Landing Page
+## Example of search with two ingredients selected
 ![alt text](screenshots/pantryParserLandingPage.PNG)
 
 ## Recipe Result
