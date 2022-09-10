@@ -6,7 +6,7 @@ export function Recipes(props) {
   return (
     <div id="recipes">
       {      
-        Object.keys(props.recipes).map(numberOfMatchingIngredients => (
+        Object.keys(props.recipes).sort((a, b) => b - a).map(numberOfMatchingIngredients => (
           <div>
             <h1>Matching {numberOfMatchingIngredients} Ingredient(s)</h1>
             <div className="recipeSet">
