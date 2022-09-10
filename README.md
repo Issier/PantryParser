@@ -6,9 +6,6 @@ Backend provided by [PantryParserAPI](https://github.com/Issier/PantryParserAPI)
 ## Landing Page
 ![alt text](screenshots/pantryParserLandingPage.PNG)
 
-## Search Results
-![alt text](screenshots/pantryParserSearch.PNG)
-
 ## Recipe Result
 ![alt text](screenshots/pantryParserRecipe.PNG)
 
