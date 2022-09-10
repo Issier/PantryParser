@@ -19,7 +19,7 @@ export function Recipe(props) {
         setIngredientMatching(Object.keys(props.selectedIngredients).filter((ingredientName) => {
             return props.recipe["ingredients"].map((i) => i["name"]).includes(ingredientName)
         }));
-    }, []);
+    }, [props.recipe]);
 
     const IngredientMatching = () => {
         return ingredientsMatching.map((ingredient) => {
