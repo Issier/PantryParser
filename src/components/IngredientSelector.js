@@ -76,14 +76,16 @@ export function IngredientSelector(props) {
                         aria-describedby="basic-addon2"
                     />
                 </InputGroup>
-                <div>
-                    {
-                        Object.keys(selectedIngredients).map(ingredient => <Button className="selectedIngredientsButton blueButtonColor" key={ingredient} onClick={() => removeIngredient(ingredient)}>{ingredient}</Button>)
-                    }
-                </div>
-                <Button id="getRecipesButton" disabled={Object.keys(selectedIngredients).length < 1} onClick={props.getRecipeList}>Get Recipes</Button>
-                </Card.Header>
                 { selectedIngredientsBody }
+                </Card.Header>
+                <Card.Body>
+                    <div>
+                        {
+                            Object.keys(selectedIngredients).map(ingredient => <Button className="selectedIngredientsButton blueButtonColor" key={ingredient} onClick={() => removeIngredient(ingredient)}>{ingredient}</Button>)
+                        }
+                    </div>
+                    <Button id="getRecipesButton" disabled={Object.keys(selectedIngredients).length < 1} onClick={props.getRecipeList}>Get Recipes</Button>
+                </Card.Body>
             </Card>
         </div>
     )
