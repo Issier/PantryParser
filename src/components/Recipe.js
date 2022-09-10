@@ -23,7 +23,7 @@ export function Recipe(props) {
 
     const IngredientMatching = () => {
         return ingredientsMatching.map((ingredient) => {
-            return <Badge pill style={{backgroundColor: 'lightblue', margin: '5px'}}>{ingredient}</Badge>
+            return <Badge bg="success" pill style={{color: 'white', padding: '6px', margin: '3px'}}>{ingredient}</Badge>
         });
     }
 

@@ -61,15 +61,18 @@ h1 {
 }
 
 .recipe {
-  max-width: 400px;
-
+  max-width: 300px;
+  min-width: 250px;
+  margin-bottom: 30px;
 }
 
 .recipeSet {
   margin-top: 10px;
   margin-bottom: 50px;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 #ingredientSearchBar {

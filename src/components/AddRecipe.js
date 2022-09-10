@@ -17,7 +17,7 @@ export function AddRecipe(props) {
     }, []);
 
     const closeRecipeLinkHandler = () => {
-        props.setShow(false);
+        props.onFormClose(false);
     }
 
     const submitRecipe = () => {
@@ -25,7 +25,7 @@ export function AddRecipe(props) {
             method: 'POST',
             body: JSON.stringify(recipe)
         }).then(() => {
-            props.setShow(false);
+            props.onFormClose(true);
         });
     }
 
@@ -46,7 +46,7 @@ export function AddRecipe(props) {
 
     return (
         <Modal show={props.show}>
-            <Modal.Header closeButton={closeRecipeLinkHandler}>
+            <Modal.Header>
                 <Modal.Title>Add Recipe</Modal.Title>
             </Modal.Header>
             <Modal.Body>

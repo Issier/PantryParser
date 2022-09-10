@@ -5,12 +5,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { Redirect } from 'react-router-dom';
 import AddRecipe from './components/AddRecipe.js';
-import { Navbar, Nav, NavDropdown, Modal, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Toast } from 'react-bootstrap';
 
 function App() {
   const [selectedIngredients, setSelectedIngredients] = useState({})
   const [recipes, setRecipes] = useState({});
   const [show, setShow] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
 
   const getRecipeList = () => {
@@ -24,9 +25,22 @@ function App() {
       )
   }
 
+  const recipeFormCloseHandler = (recipeAdded) => {
+    setShow(false);
+    setShowToast(recipeAdded);
+  }
+
   return (
     <div className="App">
-      <AddRecipe show={show} setShow={setShow}/>
+      <Toast show={showToast} animation={true} delay={3000} autohide bg="success">
+        <Toast.Header closeButton={false}>
+          Success
+        </Toast.Header>
+        <Toast.Body>
+          Recipe was successfully added!
+        </Toast.Body>
+      </Toast>
+      <AddRecipe show={show} onFormClose={recipeFormCloseHandler}/>
       <header className="App-header">
         <Navbar collapseOnSelect bg="light" variant="light">
           <NavDropdown id="collasible-nav-dropdown navItemsMobile">
