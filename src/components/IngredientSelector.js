@@ -38,7 +38,7 @@ export function IngredientSelector(props) {
         selectedIngredientsBody = (
             <Card.Body style={{ width: '90%', marginLeft: '5%' }}>
                 {
-                    searchIngredients.map(ingredient => (
+                    searchIngredients.sort((a, b) => a.name < b.name ? -1 : 1).map(ingredient => (
                         <Button className="ingredientButton blueButtonColor" onClick={(e) => updateIngredients(ingredient)} key={ingredient.name}>{ingredient.name}</Button>
                     ))
                 }
