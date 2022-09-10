@@ -50,7 +50,6 @@ function App() {
             <Nav.Link className="navItemsDesktop" target="_" href="https://github.com/Issier/PantryParser">Github</Nav.Link>
           </Nav>
         </Navbar>
-        <img alt="Groceries" src={"/pantryParserLogo.png"} id="groceryImage"></img>
       </header>
       <Router>
         <Switch>
