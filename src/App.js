@@ -5,12 +5,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { Redirect } from 'react-router-dom';
 import AddRecipe from './components/AddRecipe.js';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Modal, Button } from 'react-bootstrap';
 
 function App() {
   const [selectedIngredients, setSelectedIngredients] = useState({})
   const [recipes, setRecipes] = useState({});
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [show, setShow] = useState(false);
 
 
   const getRecipeList = () => {
@@ -19,7 +19,6 @@ function App() {
       .then(res => res.json())
       .then(
         (result) => {
-          setIsLoaded(true)
           setRecipes(result)
         }
       )
@@ -27,11 +26,12 @@ function App() {
 
   return (
     <div className="App">
+      <AddRecipe show={show} setShow={setShow}/>
       <header className="App-header">
         <Navbar collapseOnSelect bg="light" variant="light">
           <NavDropdown id="collasible-nav-dropdown navItemsMobile">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/recipes/add">Add Recipe</Nav.Link>
+            <Nav.Link onClick={() => setShow(true)}>Add Recipe</Nav.Link>
             <Nav.Link target="_" href="https://github.com/Issier/PantryParser">Github</Nav.Link>
           </NavDropdown>
           <Navbar.Brand href="/"> 
@@ -46,7 +46,7 @@ function App() {
           </Navbar.Brand>
           <Nav>
             <Nav.Link className="navItemsDesktop" href="/">Home</Nav.Link>
-            <Nav.Link className="navItemsDesktop" href="/recipes/add">Add Recipe</Nav.Link>
+            <Nav.Link onClick={() => setShow(true)}>Add Recipe</Nav.Link>
             <Nav.Link className="navItemsDesktop" target="_" href="https://github.com/Issier/PantryParser">Github</Nav.Link>
           </Nav>
         </Navbar>

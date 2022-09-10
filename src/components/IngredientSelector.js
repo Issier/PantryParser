@@ -36,7 +36,7 @@ export function IngredientSelector(props) {
         );
     } else {
         selectedIngredientsBody = (
-            <Card.Body>
+            <Card.Body style={{ width: '90%', marginLeft: '5%' }}>
                 {
                     searchIngredients.map(ingredient => (
                         <Button className="ingredientButton blueButtonColor" onClick={(e) => updateIngredients(ingredient)} key={ingredient.name}>{ingredient.name}</Button>
