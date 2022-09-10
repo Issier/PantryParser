@@ -4,34 +4,31 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 export function IngredientSelector(props) {
-    const [isLoaded, setIsLoaded] = useState(false);
     const [ingredients, setIngredients] = useState([]);
     const [searchIngredients, setSearchIngredients] = useState([]);
     const [selectedIngredients, setSelectedIngredients] = useState([]);
-    const [lastQuery, setLastQuery] = useState("");
 
     useEffect(() => {
         fetch("http://localhost:8080/ingredients")
             .then(res => res.json())
             .then(
             (result) => {
-                setIsLoaded(true)
                 setIngredients(result)
             }
             )
         }, []);
+    
+    useEffect(() => {
+        setSearchIngredients(ingredients);
+    }, [ingredients]);
 
     function updateIngredientList(ingredientSearchTerm) {
-        setSearchIngredients(ingredientSearchTerm === "" ? [] : ingredients.filter(ingredient => ingredient.name.includes(ingredientSearchTerm)));
-        setLastQuery(ingredientSearchTerm)
+        setSearchIngredients(ingredientSearchTerm === "" ? ingredients : ingredients.filter(ingredient => ingredient.name.includes(ingredientSearchTerm)));
     }
 
     let selectedIngredientsBody;
 
-    if (lastQuery === "") {
-        selectedIngredientsBody = (<span></span>)
-    }
-    else if (searchIngredients.length == 0) {
+    if (searchIngredients.length == 0) {
         selectedIngredientsBody = (
             <Card.Body>
                 <div>No Ingredients Found Matching Search String</div>

@@ -55,11 +55,9 @@ h1 {
 }
 
 .ingredientButton {
-  width: 70%;
-  max-width: 500px;
+  height: 40px;
   margin-top: 10px;
   margin-left: 5px;
-  padding: 1em;
 }
 
 .recipe {
