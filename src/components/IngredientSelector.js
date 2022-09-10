@@ -7,6 +7,7 @@ export function IngredientSelector(props) {
     const [ingredients, setIngredients] = useState([]);
     const [searchIngredients, setSearchIngredients] = useState([]);
     const [selectedIngredients, setSelectedIngredients] = useState([]);
+    const [ingredientSearchTerm, setIngredientSearchTerm] = useState("")
 
     useEffect(() => {
         fetch("http://localhost:8080/ingredients")
@@ -17,18 +18,18 @@ export function IngredientSelector(props) {
             }
             )
         }, []);
-    
-    useEffect(() => {
-        setSearchIngredients(ingredients);
-    }, [ingredients]);
 
     function updateIngredientList(ingredientSearchTerm) {
-        setSearchIngredients(ingredientSearchTerm === "" ? ingredients : ingredients.filter(ingredient => ingredient.name.includes(ingredientSearchTerm)));
+        setIngredientSearchTerm(ingredientSearchTerm);
+        setSearchIngredients(ingredientSearchTerm === "" ? [] : ingredients.filter(ingredient => ingredient.name.includes(ingredientSearchTerm)));
     }
 
     let selectedIngredientsBody;
 
-    if (searchIngredients.length == 0) {
+    if (!ingredientSearchTerm) {
+        selectedIngredientsBody = <span></span>
+    }
+    else if (searchIngredients.length == 0) {
         selectedIngredientsBody = (
             <Card.Body>
                 <div>No Ingredients Found Matching Search String</div>
