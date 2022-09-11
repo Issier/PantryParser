@@ -3,7 +3,7 @@ import { Form, Modal, Button } from 'react-bootstrap';
 
 export function AddRecipe(props) {
     const [ingredients, setIngredients] = useState([]);
-    const [recipe, setRecipe] = useState({ name: "", description: "", ingredients: [] });
+    const [recipe, setRecipe] = useState({ name: "", description: "", ingredients: [], link: "" });
 
 
     useEffect(() => {
@@ -44,6 +44,11 @@ export function AddRecipe(props) {
         description: event.target.value
     });
 
+    const handleLinkEvent = (event) => setRecipe({
+        ...recipe,
+        link: event.target.value
+    })
+
     return (
         <Modal show={props.show}>
             <Modal.Header>
@@ -58,6 +63,10 @@ export function AddRecipe(props) {
                     <Form.Group>
                         <Form.Label>Description</Form.Label>
                         <Form.Control onChange={handleDescriptionEvent} type="text" placeholder="Enter recipe description" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Link</Form.Label>
+                        <Form.Control onChange={handleLinkEvent} type="text" placeholder="(Optional) Enter link to recipe" />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Ingredients</Form.Label>

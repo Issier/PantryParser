@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Table, Nav, Card, Badge} from 'react-bootstrap';
+import {Table, Nav, Card, Badge, Button} from 'react-bootstrap';
 
 export function Recipe(props) {
     const [key, setKey] = useState("overview");
@@ -84,6 +84,9 @@ export function Recipe(props) {
                 </Nav>
             </Card.Header>
             {renderBody}
+            {props.recipe["link"] && <Card.Footer style={{padding: '0'}}>
+                <Button style={{width: '100%', backgroundColor: 'green', borderColor: 'lightgray'}} href={props.recipe["link"]} target="_blank">Go To Recipe</Button>
+            </Card.Footer>}
         </Card>
     )
 }
