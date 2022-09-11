@@ -11,7 +11,7 @@ export function AddRecipe(props) {
             .then(res => res.json())
             .then(
                 (result) => {
-                    setIngredients(result)
+                    setIngredients(result.sort((a, b) => a.name < b.name ? -1 : 1))
                 }
             )
     }, []);
