@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Modal, Button } from 'react-bootstrap';
+import './AddRecipe.css'
 
 export function AddRecipe(props) {
     const [ingredients, setIngredients] = useState([]);

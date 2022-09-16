@@ -1,0 +1,16 @@
+.recipe {
+    max-width: 300px;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+  
+.recipeCardBody {
+    height: 300px;
+}
+
+#checkSymbol {
+    width: 2em;
+    max-width: 20px;
+    height: 2em;
+    max-height: 20px;
+}

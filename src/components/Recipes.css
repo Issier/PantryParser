@@ -1,0 +1,16 @@
+#recipes {
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+    width: 80%;
+    margin-left: 10%;
+}
+  
+.recipeSet {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}

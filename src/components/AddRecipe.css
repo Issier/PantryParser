@@ -1,0 +1,10 @@
+#newRecipe {
+    background-color: #F7F7F7;
+    padding: 10px 10% 50% 10%;
+}
+
+#newRecipe h1 {
+    display: block;
+    text-align: center;
+    font-size: 1.25rem;
+}

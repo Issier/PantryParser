@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Table, Nav, Card, Badge, Button} from 'react-bootstrap';
+import './Recipe.css'
 
 export function Recipe(props) {
     const [key, setKey] = useState("overview");
@@ -59,7 +60,7 @@ export function Recipe(props) {
         )
     } else {
         renderBody = (
-            <div>
+            <div className="recipeCardBody">
                 <Card.Body>
                 <Card.Title>{props.recipe["name"]}</Card.Title>
                 <Card.Subtitle><IngredientMatching /></Card.Subtitle>

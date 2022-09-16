@@ -1,5 +1,6 @@
 import React from 'react';
 import Recipe from './Recipe';
+import './Recipes.css'
 
 export function Recipes(props) {
 
