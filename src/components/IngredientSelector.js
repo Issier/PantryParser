@@ -29,7 +29,7 @@ export function IngredientSelector (props) {
 
   if (!ingredientSearchTerm) {
     selectedIngredientsBody = <span></span>
-  } else if (searchIngredients.length == 0) {
+  } else if (searchIngredients.length === 0) {
     selectedIngredientsBody = (
             <Card.Body>
                 <div>No Ingredients Found Matching Search String</div>

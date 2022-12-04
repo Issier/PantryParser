@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Table, Nav, Card, Badge, Button } from 'react-bootstrap'
 import './Recipe.css'
 
 export function Recipe (props) {
   const [key, setKey] = useState('overview')
-  const [ingredientsMatching, setIngredientMatching] = useState([])
 
   let renderBody
 
@@ -15,12 +14,6 @@ export function Recipe (props) {
       return 'xmark.jpg'
     }
   }
-
-  useEffect(() => {
-    setIngredientMatching(Object.keys(props.selectedIngredients).filter((ingredientName) => {
-      return props.recipe.ingredients.map((i) => i.name).includes(ingredientName)
-    }))
-  }, [props.recipe])
 
   const IngredientMatching = () => {
     console.log(Object.entries(props.selectedIngredients))

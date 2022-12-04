@@ -5,7 +5,7 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard-with-typescript"
+        "standard"
     ],
     "overrides": [
     ],
@@ -17,5 +17,6 @@
         "react"
     ],
     "rules": {
+        "react/prop-types": 0
     }
 }
