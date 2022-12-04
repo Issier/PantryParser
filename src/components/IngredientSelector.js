@@ -1,43 +1,42 @@
-import React, {useState, useEffect} from 'react';
-import { InputGroup, FormControl } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import React, { useState, useEffect } from 'react'
+import { InputGroup, FormControl } from 'react-bootstrap'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 import './IngredientSelector.css'
 
-export function IngredientSelector(props) {
-    const [ingredients, setIngredients] = useState([]);
-    const [searchIngredients, setSearchIngredients] = useState([]);
-    const [selectedIngredients, setSelectedIngredients] = useState([]);
-    const [ingredientSearchTerm, setIngredientSearchTerm] = useState("")
+export function IngredientSelector (props) {
+  const [ingredients, setIngredients] = useState([])
+  const [searchIngredients, setSearchIngredients] = useState([])
+  const [selectedIngredients, setSelectedIngredients] = useState([])
+  const [ingredientSearchTerm, setIngredientSearchTerm] = useState('')
 
-    useEffect(() => {
-        fetch("http://localhost:8080/ingredients")
-            .then(res => res.json())
-            .then(
-            (result) => {
-                setIngredients(result)
-            }
-            )
-        }, []);
+  useEffect(() => {
+    fetch('http://localhost:8080/ingredients')
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIngredients(result)
+        }
+      )
+  }, [])
 
-    function updateIngredientList(ingredientSearchTerm) {
-        setIngredientSearchTerm(ingredientSearchTerm);
-        setSearchIngredients(ingredientSearchTerm === "" ? [] : ingredients.filter(ingredient => ingredient.name.includes(ingredientSearchTerm)));
-    }
+  function updateIngredientList (ingredientSearchTerm) {
+    setIngredientSearchTerm(ingredientSearchTerm)
+    setSearchIngredients(ingredientSearchTerm === '' ? [] : ingredients.filter(ingredient => ingredient.name.includes(ingredientSearchTerm)))
+  }
 
-    let selectedIngredientsBody;
+  let selectedIngredientsBody
 
-    if (!ingredientSearchTerm) {
-        selectedIngredientsBody = <span></span>
-    }
-    else if (searchIngredients.length == 0) {
-        selectedIngredientsBody = (
+  if (!ingredientSearchTerm) {
+    selectedIngredientsBody = <span></span>
+  } else if (searchIngredients.length == 0) {
+    selectedIngredientsBody = (
             <Card.Body>
                 <div>No Ingredients Found Matching Search String</div>
             </Card.Body>
-        );
-    } else {
-        selectedIngredientsBody = (
+    )
+  } else {
+    selectedIngredientsBody = (
             <Card.Body style={{ width: '90%', marginLeft: '5%' }}>
                 {
                     searchIngredients.sort((a, b) => a.name < b.name ? -1 : 1).map(ingredient => (
@@ -45,28 +44,28 @@ export function IngredientSelector(props) {
                     ))
                 }
             </Card.Body>
-        );
+    )
+  }
+
+  const removeIngredient = (ingredient) => {
+    const currentUpdatedIngredients = {
+      ...selectedIngredients
     }
+    delete currentUpdatedIngredients[ingredient]
+    props.updateIngredients(currentUpdatedIngredients)
+    setSelectedIngredients(currentUpdatedIngredients)
+  }
 
-    const removeIngredient = (ingredient) => {
-        let currentUpdatedIngredients = {
-          ...selectedIngredients
-        };
-        delete currentUpdatedIngredients[ingredient]
-        props.updateIngredients(currentUpdatedIngredients)
-        setSelectedIngredients(currentUpdatedIngredients)
+  const updateIngredients = (ingredient) => {
+    const newSelectedIngredients = {
+      ...selectedIngredients,
+      [ingredient.name]: ingredient
     }
+    setSelectedIngredients(newSelectedIngredients)
+    props.updateIngredients(newSelectedIngredients)
+  }
 
-    const updateIngredients = (ingredient) => {
-        const newSelectedIngredients = {
-            ...selectedIngredients,
-            [ingredient.name]: ingredient,
-        }
-        setSelectedIngredients(newSelectedIngredients)
-        props.updateIngredients(newSelectedIngredients)
-     }
-
-    return (
+  return (
         <div id="ingredients">
             <Card>
                 <Card.Header>
@@ -90,8 +89,7 @@ export function IngredientSelector(props) {
                 </Card.Body>
             </Card>
         </div>
-    )
+  )
 }
 
-
-export default IngredientSelector   
+export default IngredientSelector

@@ -1,12 +1,11 @@
-import React from 'react';
-import Recipe from './Recipe';
+import React from 'react'
+import Recipe from './Recipe'
 import './Recipes.css'
 
-export function Recipes(props) {
-
+export function Recipes (props) {
   return (
     <div id="recipes">
-      {      
+      {
         Object.keys(props.recipes).sort((a, b) => b - a).map(numberOfMatchingIngredients => (
           <div>
             <h1>Matching {numberOfMatchingIngredients} Ingredient(s)</h1>
@@ -21,7 +20,7 @@ export function Recipes(props) {
         ))
       }
     </div>
-  );
+  )
 }
 
-export default Recipes;
+export default Recipes

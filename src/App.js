@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
-import Recipes from './components/Recipes.js'; 
-import IngredientSelector from './components/IngredientSelector.js';
-import './App.css';
-import AddRecipe from './components/AddRecipe.js';
-import AddIngredient from './components/AddIngredient.js';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import React, { useState } from 'react'
+import Recipes from './components/Recipes.js'
+import IngredientSelector from './components/IngredientSelector.js'
+import './App.css'
+import AddRecipe from './components/AddRecipe.js'
+import AddIngredient from './components/AddIngredient.js'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 
-function App() {
+function App () {
   const [selectedIngredients, setSelectedIngredients] = useState({})
-  const [recipes, setRecipes] = useState({});
-  const [showAddRecipe, setShowAddRecipe] = useState(false);
-  const [showAddIngredient, setShowAddIngredient] = useState(false);
-
+  const [recipes, setRecipes] = useState({})
+  const [showAddRecipe, setShowAddRecipe] = useState(false)
+  const [showAddIngredient, setShowAddIngredient] = useState(false)
 
   const getRecipeList = () => {
-    const ingredientQueryArgs = Object.keys(selectedIngredients).join(",")
+    const ingredientQueryArgs = Object.keys(selectedIngredients).join(',')
     fetch(`http://localhost:8080/recipes?ingredients=${ingredientQueryArgs}`)
       .then(res => res.json())
       .then(
@@ -25,11 +24,11 @@ function App() {
   }
 
   const recipeFormCloseHandler = (recipeAdded) => {
-    setShowAddRecipe(false);
+    setShowAddRecipe(false)
   }
 
   const ingredientFormCloseHandler = (ingredientAdded) => {
-    setShowAddIngredient(false);
+    setShowAddIngredient(false)
   }
 
   return (
@@ -44,7 +43,7 @@ function App() {
             <Nav.Link onClick={() => setShowAddIngredient(true)}>Add Ingredient</Nav.Link>
             <Nav.Link target="_" href="https://github.com/Issier/PantryParser">Github</Nav.Link>
           </NavDropdown>
-          <Navbar.Brand href="/"> 
+          <Navbar.Brand href="/">
           <img
             alt="apple"
             src="/apple.png"
@@ -52,7 +51,7 @@ function App() {
             height="30"
             className="d-inline-block align-top"
           />{' '}
-          Pantry Parser 
+          Pantry Parser
           </Navbar.Brand>
           <Nav>
             <Nav.Link className="navItemsDesktop" href="/">Home</Nav.Link>
@@ -67,7 +66,7 @@ function App() {
         <Recipes selectedIngredients={selectedIngredients} recipes={recipes} updateIngredients={setSelectedIngredients}></Recipes>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

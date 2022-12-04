@@ -1,56 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Modal, Button } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react'
+import { Form, Modal, Button } from 'react-bootstrap'
 import './AddRecipe.css'
 
-export function AddRecipe(props) {
-    const [ingredients, setIngredients] = useState([]);
-    const [recipe, setRecipe] = useState({ name: "", description: "", ingredients: [], link: "" });
+export function AddRecipe (props) {
+  const [ingredients, setIngredients] = useState([])
+  const [recipe, setRecipe] = useState({ name: '', description: '', ingredients: [], link: '' })
 
+  useEffect(() => {
+    fetch('http://localhost:8080/ingredients')
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIngredients(result.sort((a, b) => a.name < b.name ? -1 : 1))
+        }
+      )
+  }, [])
 
-    useEffect(() => {
-        fetch("http://localhost:8080/ingredients")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setIngredients(result.sort((a, b) => a.name < b.name ? -1 : 1))
-                }
-            )
-    }, []);
+  const closeRecipeLinkHandler = () => {
+    props.onFormClose(false)
+  }
 
-    const closeRecipeLinkHandler = () => {
-        props.onFormClose(false);
-    }
-
-    const submitRecipe = () => {
-        fetch(`http://localhost:8080/recipes/add`, {
-            method: 'POST',
-            body: JSON.stringify(recipe)
-        }).then(() => {
-            props.onFormClose(true);
-        });
-    }
-
-    const handleOptionEvent = (event) => setRecipe({
-        ...recipe,
-        ingredients: [...event.target.options].filter(o => o.selected).map(o => { return { name: o.value.split(",")[0], category: o.value.split(",")[1] } })
-    });
-
-    const handleNameEvent = (event) => setRecipe({
-        ...recipe,
-        name: event.target.value
-    });
-
-    const handleDescriptionEvent = (event) => setRecipe({
-        ...recipe,
-        description: event.target.value
-    });
-
-    const handleLinkEvent = (event) => setRecipe({
-        ...recipe,
-        link: event.target.value
+  const submitRecipe = () => {
+    fetch('http://localhost:8080/recipes/add', {
+      method: 'POST',
+      body: JSON.stringify(recipe)
+    }).then(() => {
+      props.onFormClose(true)
     })
+  }
 
-    return (
+  const handleOptionEvent = (event) => setRecipe({
+    ...recipe,
+    ingredients: [...event.target.options].filter(o => o.selected).map(o => { return { name: o.value.split(',')[0], category: o.value.split(',')[1] } })
+  })
+
+  const handleNameEvent = (event) => setRecipe({
+    ...recipe,
+    name: event.target.value
+  })
+
+  const handleDescriptionEvent = (event) => setRecipe({
+    ...recipe,
+    description: event.target.value
+  })
+
+  const handleLinkEvent = (event) => setRecipe({
+    ...recipe,
+    link: event.target.value
+  })
+
+  return (
         <Modal show={props.show}>
             <Modal.Header>
                 <Modal.Title>Add Recipe</Modal.Title>
@@ -74,7 +73,7 @@ export function AddRecipe(props) {
                         <Form.Control onChange={handleOptionEvent} as="select" multiple>
                             {
                                 ingredients.map(ingredient => (
-                                    <option key={ingredient["name"]} value={[ingredient["name"], ingredient["category"]]}>{ingredient["name"]}</option>
+                                    <option key={ingredient.name} value={[ingredient.name, ingredient.category]}>{ingredient.name}</option>
                                 ))
                             }
                         </Form.Control>
@@ -90,8 +89,7 @@ export function AddRecipe(props) {
                 </Button>
             </Modal.Footer>
         </Modal>
-    )
-
+  )
 }
 
-export default AddRecipe;
+export default AddRecipe

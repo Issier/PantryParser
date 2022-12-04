@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import { Form, Modal, Button } from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Form, Modal, Button } from 'react-bootstrap'
 
 const AddIngredient = (props) => {
-    const [ingredientName, setIngredientName] = useState("");
-    const [ingredientCategory, setIngredientCategory] = useState("");
+  const [ingredientName, setIngredientName] = useState('')
+  const [ingredientCategory, setIngredientCategory] = useState('')
 
-    const nameChangeHandler = (event) => {
-        setIngredientName(event.target.value)
-    }
+  const nameChangeHandler = (event) => {
+    setIngredientName(event.target.value)
+  }
 
-    const categoryChangeHandler = (event) => {
-        setIngredientCategory(event.target.value)
-    }
+  const categoryChangeHandler = (event) => {
+    setIngredientCategory(event.target.value)
+  }
 
-    const submitHandler = () => {
-        fetch(`http://localhost:8080/ingredients/add`, {
-            method: 'POST',
-            body: JSON.stringify({name: ingredientName, category: ingredientCategory})
-        }).then(() => {
-            props.onFormClose(true);
-        });
-    }
+  const submitHandler = () => {
+    fetch('http://localhost:8080/ingredients/add', {
+      method: 'POST',
+      body: JSON.stringify({ name: ingredientName, category: ingredientCategory })
+    }).then(() => {
+      props.onFormClose(true)
+    })
+  }
 
-    const cancelHandler = () => {
-        props.onFormClose(false);
-    }
+  const cancelHandler = () => {
+    props.onFormClose(false)
+  }
 
-    return <Modal show={props.show}>
+  return <Modal show={props.show}>
         <Modal.Header>
             <Modal.Title>Add Ingredient</Modal.Title>
         </Modal.Header>
@@ -49,4 +49,4 @@ const AddIngredient = (props) => {
     </Modal>
 }
 
-export default AddIngredient;
+export default AddIngredient
